@@ -2,26 +2,26 @@ package LinkedList;
 
 import java.util.ArrayList;
 
-public class LinkedList<Type> {
-    private Node<Type> head;
-    private Node<Type> tail;
+public class LinkedList<T> {
+    private Node<T> head;
+    private Node<T> tail;
 
     private LinkedList() {
         head = null;
         tail = null;
     }
 
-    void addInTail(Type item) {
-        Node<Type> node = new Node<Type>(item);
-        if (this.head == null)
-            this.head = node;
+    void addInTail(T item) {
+        Node<T> node = new Node<>(item);
+        if (head == null)
+            head = node;
         else
-            this.tail.next = node;
-        this.tail = node;
+            tail.next = node;
+        tail = node;
     }
 
-    public Node find(Type value) {
-        Node node = this.head;
+    public Node<T> find(T value) {
+        Node<T> node = head;
         while (node != null) {
             if (node.value.equals(value))
                 return node;
@@ -30,9 +30,9 @@ public class LinkedList<Type> {
         return null;
     }
 
-    public ArrayList<Node> findAll(Type _value) {
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        Node<Type> node = this.head;
+    public ArrayList<Node<T>> findAll(T _value) {
+        ArrayList<Node<T>> nodes = new ArrayList<>();
+        Node<T> node = head;
         while (node != null) {
             if (node.value.equals(_value)) {
                 nodes.add(node);
@@ -42,24 +42,23 @@ public class LinkedList<Type> {
         return nodes;
     }
 
-    public boolean remove(Type value) {
-        Node<Type> node = this.head;
-        Node<Type> previous = this.head;
+    public boolean remove(T value) {
+        Node<T> node = head;
+        Node<T> previous = head;
         while (node != null) {
             if (node.value.equals(value)) {
-                if (node == this.head) {
-                    this.head = node.next;
+                if (node == head) {
+                    head = node.next;
                     if (node.next == null) {
                         tail = null;
                     }
-                    return true; // если узел был удалён
                 } else {
                     if (node.next == null) {
                         tail = previous;
                     }
                     previous.next = node.next;
-                    return true; // если узел был удалён
                 }
+                return true;
             }
             previous = node;
             node = node.next;
@@ -67,9 +66,9 @@ public class LinkedList<Type> {
         return false;
     }
 
-    public void removeAll(Type value) {//код удаления всех узлов по заданному значению
-        Node<Type> node = head;
-        Node<Type> previous = head;
+    public void removeAll(T value) {//код удаления всех узлов по заданному значению
+        Node<T> node = head;
+        Node<T> previous = head;
         while (node != null) {
             if (node.value.equals(value)) {
                 if (node == head) {//когда удаляемый элемент в начале листа
@@ -83,7 +82,7 @@ public class LinkedList<Type> {
                     previous.next = null;
                 } else {//Когда элемент находится между другими элементами
                     previous.next = node.next;
-                    Node<Type> buffer = node.next;
+                    Node<T> buffer = node.next;
                     node.next = null;
                     node = buffer;
                 }
@@ -95,14 +94,12 @@ public class LinkedList<Type> {
     }
 
     public void clear() {
-        // здесь будет ваш код очистки всего списка
         this.head = null;
         this.tail = null;
     }
 
     public int count() {
-        // здесь будет ваш код подсчёта количества элементов в списке
-        Node node = head;
+        Node<T> node = head;
         int counter = 0;
         while (node != null) {
             counter++;
@@ -111,7 +108,7 @@ public class LinkedList<Type> {
         return counter;
     }
 
-    public void insertAfter(Node<Type> _nodeAfter, Node<Type> _nodeToInsert) {
+    public void insertAfter(Node<T> _nodeAfter, Node<T> _nodeToInsert) {
         // здесь будет ваш код вставки узла после заданного
         // если _nodeAfter = null ,
         // добавьте новый элемент первым в списке
@@ -123,7 +120,7 @@ public class LinkedList<Type> {
             }
         } else {
             boolean isInserted = false;
-            Node node = this.head;
+            Node<T> node = this.head;
             while (!isInserted) {
                 if (_nodeAfter == node) {
                     if (_nodeAfter.next == null) {
@@ -132,7 +129,7 @@ public class LinkedList<Type> {
                         this.tail = _nodeToInsert;
                         isInserted = true;
                     } else {
-                        Node<Type> buffer = _nodeAfter.next;
+                        Node<T> buffer = _nodeAfter.next;
                         _nodeAfter.next = _nodeToInsert;
                         _nodeToInsert.next = buffer;
                         isInserted = true;
@@ -145,7 +142,7 @@ public class LinkedList<Type> {
     }
 
     public void printList() {
-        Node<Type> node = head;
+        Node<T> node = head;
         while (node != null) {
             System.out.print(node.value + " ");
             node = node.next;

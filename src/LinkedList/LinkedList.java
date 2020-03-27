@@ -109,9 +109,6 @@ public class LinkedList<T> {
     }
 
     public void insertAfter(Node<T> _nodeAfter, Node<T> _nodeToInsert) {
-        // здесь будет ваш код вставки узла после заданного
-        // если _nodeAfter = null ,
-        // добавьте новый элемент первым в списке
         if (_nodeAfter == null) {
             _nodeToInsert.next = this.head;
             this.head = _nodeToInsert;
@@ -158,5 +155,4 @@ public class LinkedList<T> {
             next = null;
         }
     }
-
 }

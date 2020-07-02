@@ -1,6 +1,6 @@
 # DataStructures
-Data structures implementations on Java:
-* [Linked list](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/LinkedList)
+### Data structures implementations on Java:
+* [Linked list](src/LinkedList/LinkedList.java)
 * [Doubly linked list](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/DoublyLinkedList)
 * [Stack](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/Stack)
 * [Queue](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/Queue)
@@ -9,5 +9,5 @@ Data structures implementations on Java:
 * [Dynamic array](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/DynArray)
 
 
-Algorithms:
+### Algorithms:
 * [Quick sort](https://github.com/SirojiddinSaidmurodov/Algorithms-and-data-structures/tree/master/src/QuickSort)
